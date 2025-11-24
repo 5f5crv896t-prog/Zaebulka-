@@ -1,0 +1,81 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+
+:root{
+  --bg:#070b12;
+  --card:#0e1116;
+  --accent1:#6b4fb2;
+  --accent2:#b07be0;
+  --muted:#9aa3ad;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:#f3f4f6;
+  font-family:Inter, Arial, sans-serif;
+  padding:30px;
+}
+
+.container{
+  max-width:900px;
+  margin:40px auto;
+  padding:30px;
+  background:rgba(255,255,255,0.02);
+  border-radius:12px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.6);
+}
+
+h1,h2{
+  font-family:'Playfair Display', serif;
+  color:#fff;
+}
+
+.typing{
+  white-space:pre-wrap;
+  overflow:hidden;
+  border-right:2px solid #b07be0;
+  animation:typing 4s steps(80), blink .75s step-end infinite;
+}
+
+@keyframes typing{
+  from{width:0;}
+  to{width:100%;}
+}
+
+@keyframes blink{
+  from,to{border-color:transparent;}
+  50%{border-color:#b07be0;}
+}
+
+.button-book{
+  display:inline-block;
+  padding:12px 22px;
+  background:#1a1f27;
+  border:1px solid #3d4451;
+  border-radius:6px;
+  text-decoration:none;
+  color:#dfe6ff;
+  font-family:'Playfair Display', serif;
+  font-size:18px;
+  box-shadow:2px 2px 0 #1f232b, 4px 4px 0 #252a33;
+  transition:0.2s;
+}
+
+.button-book:hover{
+  box-shadow:1px 1px 0 #1f232b, 2px 2px 0 #252a33;
+  transform:translate(1px,1px);
+}
+
+input[type=text]{
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  background:#0b0d10;
+  border:1px solid rgba(255,255,255,0.05);
+  color:white;
+  margin-top:10px;
+}
+
+.hint{color:#f6b26b;display:none;}
+.success{color:#8fda8f;display:none;}

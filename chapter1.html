@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Глава 1 — Комната Ложного Наблюдателя</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="container">
+<h2>Глава 1 — Комната Ложного Наблюдателя</h2>
+<p>В комнате стоят три утверждения:</p>
+<ol>
+<li>«Если вероятность события 50%, оно произойдёт в половине случаев.»</li>
+<li>«Если бросить монету 10 раз, орёл выпадет ровно 5 раз.»</li>
+<li>«Если два события независимые, одно не влияет на другое.»</li>
+</ol>
+<p>Два утверждения истинны. Одно — ложное. Назови номер ложного.</p>
+<input id="ans" type="text">
+<div id="hint" class="hint">Неверно — попробуй ещё</div>
+<div id="ok" class="success">Верно!</div>
+<a id="next" class="button-book" style="display:none" href="chapter2.html">Дальше</a>
+</div>
+<script>
+const valid = ["2", "номер два", "второе"].map(s=>s.toLowerCase());
+const inp = document.getElementById('ans');
+function clean(v){return v.trim().toLowerCase();}
+function check(){ if(valid.includes(clean(inp.value))){ 
+ document.getElementById('hint').style.display='none';
+ document.getElementById('ok').style.display='block';
+ document.getElementById('next').style.display='inline-block';
+} else {
+ document.getElementById('hint').style.display='block';
+}}
+inp.addEventListener('keydown', e=>{if(e.key==='Enter')check();});
+</script>
+</body>
+</html>
