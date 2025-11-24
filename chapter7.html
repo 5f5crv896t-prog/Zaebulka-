@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Глава 7 — Комната переменной</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="container"><div class="inner">
+<h2>Глава 7. Комната переменной</h2>
+<p>Последняя комната похожа на черновик. На стене крупно написано:</p>
+<p><code>x + x/2 + x/3 = 33</code></p>
+<p>Чуть ниже — машинописная приписка:</p>
+<p><em>«Найди x. Остальное найдётся само.»</em></p>
+<label for="ans">Ответ (число):</label>
+<input id="ans" type="text">
+<div id="hint" class="hint">Сложи доли в одну целую.</div>
+<div id="ok" class="success">Формула гаснет, а стена начинает растворяться.</div>
+<a id="next" class="button" style="display:none">К финалу</a>
+
+<div class="footer">zaebulka · тёмная кожа, лёгкий туман</div>
+</div></div>
+
+<script>
+const valid = ["18", "восемнадцать", "18.0", "x=18"].map(v=>v.toLowerCase());
+const inp = document.getElementById('ans');
+const hint = document.getElementById('hint');
+const ok = document.getElementById('ok');
+const nextBtn = document.getElementById('next');
+function clean(v){return v.trim().toLowerCase();}
+function check(){
+  const v = clean(inp.value);
+  if(valid.includes(v)){
+    hint.style.display='none';
+    ok.style.display='block';
+    nextBtn.style.display='inline-block';
+    setTimeout(()=>window.location.href='final.html',900);
+  } else {
+    hint.style.display='block';
+  }
+}
+inp.addEventListener('keydown',e=>{if(e.key==='Enter')check();});
+</script>
+
+</body></html>
