@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Финал</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container"><div class="inner">
+<h2>Финал</h2>
+<p class='typing'>Ты прошёл все главы. Каждая задачка была маленькой дверцей, и ты открыл их одну за другой.
+
+На этом маршрут не заканчивается — просто дальше его уже не печатает машинка.
+Ты знаешь, кому написать, чтобы получить ещё одну подсказку для того, чтобы получить подарок.</p>
+<a class='button' href='index.html'>Начать сначала</a>
+
+</div></div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll("a, button[data-next]");
+    links.forEach(el => {
+        el.addEventListener("click", e => {
+            const href = el.getAttribute("href") || el.dataset.next;
+            if(href){
+                e.preventDefault();
+                document.body.classList.add("fade-out");
+                setTimeout(()=>{ window.location = href; }, 350);
+            }
+        });
+    });
+});
+</script>
+
+</body></html>
