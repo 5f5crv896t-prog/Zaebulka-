@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Глава 3</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="container">
+<h2>Глава 3 — Лестница</h2>
+<p>6 ступеней, шаг 1 или 2. Сколько путей наверх?</p>
+<input id="ans" type="text">
+<div id="hint" class="hint">Почти Фибоначчи.</div>
+<div id="ok" class="success">Да.</div>
+<a id="next" class="button" style="display:none">Дальше</a>
+
+<div class="footer">zaebulka · винтажный туман</div>
+</div>
+
+<script>
+const valid = ["13", "тринадцать"].map(x=>x.toLowerCase());
+const inp=document.getElementById('ans');
+const hint=document.getElementById('hint');
+const ok=document.getElementById('ok');
+const nxt=document.getElementById('next');
+function clean(v){return v.trim().toLowerCase();}
+function check(){
+ if(valid.includes(clean(inp.value))) {
+   hint.style.display='none';
+   ok.style.display='block';
+   nxt.style.display='inline-block';
+   setTimeout(()=>window.location.href='chapter4.html',800);
+ } else {
+   hint.style.display='block';
+ }
+}
+inp.addEventListener('keydown', e=>{if(e.key==='Enter')check();});
+</script>
+
+</body></html>
