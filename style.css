@@ -1,0 +1,186 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&display=swap');
+
+:root{
+  --bg:#15110f;
+  --paper:#f7f0e3;
+  --ink:#382721;
+  --muted:#7c6d61;
+  --accent:#3b2417;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 55%),
+    radial-gradient(circle at bottom, rgba(0,0,0,0.9), #0b0806);
+  font-family:'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color:var(--ink);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px 16px;
+}
+
+/* "обложка книги" */
+.container{
+  max-width:960px;
+  width:100%;
+  margin:auto;
+  padding:20px 12px;
+  background:#120c08;
+  border-radius:18px;
+  box-shadow:
+    0 22px 60px rgba(0,0,0,0.85),
+    0 0 0 1px rgba(0,0,0,0.7);
+  position:relative;
+}
+
+/* средний сгиб как у книги */
+.container::before{
+  content:"";
+  position:absolute;
+  top:16px;
+  bottom:16px;
+  left:50%;
+  width:1px;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(255,255,255,0.06), rgba(0,0,0,0.6));
+  opacity:0.5;
+  pointer-events:none;
+}
+
+/* внутренний блок */
+.inner{
+  display:flex;
+  gap:18px;
+}
+
+/* если внутри явно есть .page — считаем их "листами" */
+.page{
+  flex:1 1 0;
+  background:var(--paper);
+  color:var(--ink);
+  padding:26px 26px 22px;
+  border-radius:10px;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.05);
+  position:relative;
+}
+
+/* если .page нет, превращаем inner в один лист (на случай старых страниц) */
+.inner:not(:has(.page)){
+  background:var(--paper);
+  color:var(--ink);
+  padding:26px 26px 22px;
+  border-radius:10px;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,0.05);
+  flex-direction:column;
+}
+
+h1,h2{
+  font-family:'Playfair Display', serif;
+  margin:0 0 14px;
+  color:#2c1c16;
+}
+
+p{
+  margin:8px 0;
+  line-height:1.6;
+  font-size:15px;
+}
+
+code{
+  font-family:Menlo,Consolas,monospace;
+  background:rgba(0,0,0,0.04);
+  padding:2px 4px;
+  border-radius:4px;
+}
+
+/* печатающийся текст */
+.typing{
+  white-space:pre-wrap;
+  overflow:hidden;
+  border-right:2px solid rgba(56,39,33,0.7);
+  animation:typing 6s steps(160,end), caret .9s step-end infinite;
+}
+
+@keyframes typing{
+  from{width:0;}
+  to{width:100%;}
+}
+@keyframes caret{
+  from,to{border-color:transparent;}
+  50%{border-color:rgba(56,39,33,0.7);}
+}
+
+/* кнопка‑закладка */
+.button, a.button{
+  display:inline-block;
+  margin-top:14px;
+  padding:11px 22px;
+  background:var(--accent);
+  border-radius:9px;
+  border:2px solid #24140c;
+  color:#f9efe2;
+  font-family:'Playfair Display', serif;
+  font-size:16px;
+  text-decoration:none;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  box-shadow:2px 2px 0 #110a07, 5px 5px 18px rgba(0,0,0,0.7);
+  transition:transform .15s ease, box-shadow .15s ease;
+  cursor:pointer;
+}
+
+.button:hover, a.button:hover{
+  transform:translate(1px,1px);
+  box-shadow:1px 1px 0 #110a07, 3px 3px 12px rgba(0,0,0,0.85);
+}
+
+/* поля ввода для ответов */
+input[type=text]{
+  width:100%;
+  padding:10px 11px;
+  margin-top:8px;
+  border-radius:7px;
+  border:1px solid #bca894;
+  background:#fbf6ec;
+  color:#3b2921;
+  font-size:15px;
+}
+input[type=text]:focus{
+  outline:none;
+  border-color:#8a6c52;
+}
+
+/* подсказки и успех */
+.hint{
+  display:none;
+  margin-top:6px;
+  font-size:13px;
+  color:#b06932;
+}
+.success{
+  display:none;
+  margin-top:6px;
+  font-size:13px;
+  color:#2f7f3b;
+}
+
+/* подпись, если она есть */
+.footer{
+  margin-top:10px;
+  font-size:11px;
+  color:var(--muted);
+  text-align:right;
+}
+
+/* адаптив */
+@media (max-width:900px){
+  body{padding:18px 8px;}
+  .container{padding:14px 8px;}
+  .container::before{display:none;}
+  .inner{flex-direction:column;}
+}
