@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+\1\n<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<title>Глава 5 — Комната теней</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container"><div class="inner">
+<h2>Глава 5. Комната теней</h2>
+<p>Ты попадаешь в зал, где на стене видны три тени: 
+острая — от треугольника, строгая — от квадрата и мягкая — от круга.</p>
+<p>На полу лежит записка:</p>
+<p><em>«Один из предметов начнёт медленно вращаться в воздухе. 
+Тень какого из них останется неизменной, каким бы ни был поворот?»</em></p>
+<label for="ans">Ответ (одно слово):</label>
+<input id="ans" type="text">
+<button class="button" onclick="check()">Подтвердить ответ</button>
+<div id="hint" class="error">Форма, для которой поворот ничего не меняет.</div>
+<div id="ok" class="success">Тень расползается по стене и превращается в дверь.</div>
+<a id="next" class="button" style="display:none">Дальше</a>
+
+
+</div></div>
+
+<script>
+const valid = ["круг", "окружность", "circle", "кружок"].map(v=>v.toLowerCase());
+const inp = document.getElementById('ans');
+const hint = document.getElementById('hint');
+const ok = document.getElementById('ok');
+const nextBtn = document.getElementById('next');
+function clean(v){return v.trim().toLowerCase();}
+function check(){
+  const v = clean(inp.value);
+  if(valid.includes(v)){
+    hint.style.display='none';
+    ok.style.display='block';
+    nextBtn.style.display='inline-block';
+    setTimeout(()=>window.location.href='chapter6.html',900);
+  } else {
+    hint.style.display='block';
+  }
+}
+inp.addEventListener('keydown',e=>{if(e.key==='Enter')check();});
+</script>
+
+
+<div class="footer">Zaebulka</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll("a, button[data-next]");
+    links.forEach(el => {
+        el.addEventListener("click", e => {
+            const href = el.getAttribute("href") || el.dataset.next;
+            if(href){
+                e.preventDefault();
+                document.body.classList.add("fade-out");
+                setTimeout(()=>{ window.location = href; }, 350);
+            }
+        });
+    });
+});
+</script>
+
+</body></html>

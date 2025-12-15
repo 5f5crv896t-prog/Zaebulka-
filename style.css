@@ -1,0 +1,128 @@
+/* ========= Reset ========= */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+img,svg,video{max-width:100%;height:auto}
+button,input,textarea,select{font:inherit}
+
+/* ========= Theme ========= */
+:root{
+  --bg:#1f140d;          /* темно-коричневый фон */
+  --card:#f4eadb;        /* светлая карточка */
+  --text:#2a1b12;        /* тёмный текст */
+  --muted:#5a4336;
+  --gold1:#ffd7a0;
+  --gold2:#ffb347;
+  --border:rgba(42,27,18,.18);
+  --shadow:rgba(0,0,0,.28);
+  --ok:#1f8b4c;          /* зелёный */
+  --bad:#c46a12;         /* рыжий */
+}
+
+/* ========= Base ========= */
+body{
+  font-family: Georgia, "Times New Roman", serif;
+  background: radial-gradient(circle at top, #2b1b12, var(--bg));
+  color: var(--text);
+  line-height:1.65;
+  letter-spacing:.01em;
+}
+
+/* ========= Layout ========= */
+.container{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  padding:24px;
+}
+
+.inner{
+  width:min(760px, 100%);
+  background: var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:32px 28px;
+  box-shadow:0 18px 60px var(--shadow);
+}
+
+/* ========= Typography ========= */
+h1,h2,h3{
+  font-weight:normal;
+  text-align:center;
+  margin:0 0 14px;
+  color: var(--text);
+}
+p{margin:0 0 16px;color:var(--text)}
+.typing{white-space:pre-line}
+ul,ol{margin:16px 0 16px 22px;color:var(--text)}
+li{margin:0 0 8px}
+
+/* ========= Form ========= */
+label{display:block;margin:12px 0 8px;color:var(--muted)}
+input[type="text"],input[type="number"],input#ans{
+  width:100%;
+  padding:14px 16px;
+  margin:10px 0 8px;
+  font-size:1rem;
+  background:#fff;
+  color:var(--text);
+  border:1px solid rgba(42,27,18,.25);
+  border-radius:12px;
+  outline:none;
+}
+input::placeholder{color:rgba(42,27,18,.45)}
+input:focus{
+  border-color: rgba(196,106,18,.65);
+  box-shadow:0 0 0 3px rgba(196,106,18,.15);
+}
+
+/* ========= Buttons ========= */
+a{color:var(--bad);text-decoration:none}
+a:hover{text-decoration:underline}
+
+button,.button,a.button{
+  display:inline-block;
+  text-align:center;
+  padding:14px 22px;
+  margin-top:14px;
+  font-size:1rem;
+  color:#2a1b12;
+  background:linear-gradient(135deg,var(--gold1),var(--gold2));
+  border:none;
+  border-radius:999px;
+  cursor:pointer;
+  text-decoration:none;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+button:hover,.button:hover,a.button:hover{
+  transform:translateY(-1px);
+  box-shadow:0 10px 22px rgba(0,0,0,.18);
+}
+button:active,.button:active,a.button:active{transform:translateY(0)}
+
+/* ========= Messages ========= */
+/* Появляются только после "Подтвердить ответ" (JS управляет display) */
+.success,.error,.hint{
+  display:none;
+  margin-top:14px;
+  font-weight:700;
+  text-align:center
+}
+.success{color:var(--ok)}
+.error,.hint{color:var(--bad)}
+
+/* ========= Footer ========= */
+.footer{margin-top:18px;opacity:.55;text-align:center;color:rgba(42,27,18,.65)}
+
+/* ========= Mobile ========= */
+@media(max-width:600px){
+  .inner{padding:24px 18px}
+  button,.button,a.button{width:100%}
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
