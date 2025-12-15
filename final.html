@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Финал</title>
+  <link rel="stylesheet" href="/Zaebulka-/style.css">
+</head>
+<body>
+<div class="container">
+  <div class="inner">
+    <div class="page">
+      <h2>Финал</h2>
+
+      <p class="typing" data-typewriter="1">
+Ты дошёл до последней главы.
+
+Все страницы остались позади — и, кажется, история могла бы на этом закончиться.
+Но ты же знаешь: самые интересные вещи редко заканчиваются там, где их напечатали.
+
+Этот маршрут был только разминкой.
+Дальше он аккуратно выходит за пределы экрана — в ту реальность, где всё по-настоящему.
+</p>
+
+      <p>
+Следующий шаг ждёт тебя совсем рядом.
+За закрытой дверью.
+</p>
+
+      <p>
+Открой её.
+И просто посмотри под ноги.
+</p>
+
+      <p>
+А если вдруг на секунду покажется, что ты запутался —
+ты всегда можешь воспользоваться подсказкой.
+</p>
+
+      <a class="button" href="https://t.me/lemurchik" target="_blank">
+        Получить подсказку
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  function typewriter(el, speed){
+    const full = el.getAttribute('data-full') || el.textContent;
+    el.setAttribute('data-full', full);
+    el.textContent = '';
+    let i = 0;
+    const timer = setInterval(()=>{
+      el.textContent += full[i] || '';
+      i++;
+      if(i >= full.length){ clearInterval(timer); }
+    }, speed);
+  }
+  document.addEventListener('DOMContentLoaded', ()=>{
+    document.querySelectorAll('.typing[data-typewriter="1"]').forEach(el=>typewriter(el, 18));
+  });
+})();
+</script>
+</body>
+</html>
